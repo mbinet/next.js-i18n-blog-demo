@@ -1,5 +1,8 @@
 module.exports = {
   purge: [],
+  corePlugins: {
+    container: false,
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {

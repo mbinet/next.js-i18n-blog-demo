@@ -8,9 +8,9 @@ import MoreStories from "../../components/more-stories";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
+import SectionZone from "../../src/section-zone";
 import { request } from "../../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments";
-import LanguageBar from "../../components/language-bar";
 
 export async function getStaticPaths({ locales }) {
   const data = await request({ query: `{ allPosts { slug } }` });
@@ -129,20 +129,23 @@ export default function Post({ subscription, preview }) {
     <Layout preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Container>
-        <LanguageBar />
         <Header />
-        <article>
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-          />
-          <PostBody content={post.content} />
-        </article>
-        <SectionSeparator />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        <SectionZone post={post} />
       </Container>
     </Layout>
   );
 }
+
+// <LanguageBar />
+// <Header />
+// <article>
+//   <PostHeader
+//     title={post.title}
+//     coverImage={post.coverImage}
+//     date={post.date}
+//     author={post.author}
+//   />
+//   <PostBody content={post.content} />
+// </article>
+// <SectionSeparator />
+// {morePosts.length > 0 && <MoreStories posts={morePosts} />}
