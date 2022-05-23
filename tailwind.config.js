@@ -1,5 +1,12 @@
 module.exports = {
-  purge: [],
+  purge: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}'
+  ],
+  corePlugins: {
+    container: false,
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -22,7 +29,7 @@ module.exports = {
       fontSize: {
         "5xl": "2.5rem",
         "6xl": "2.75rem",
-        "7xl": "4.5rem",
+        "7xl": "3.5rem",
         "8xl": "6.25rem",
       },
       boxShadow: {

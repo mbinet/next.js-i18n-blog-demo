@@ -1,5 +1,30 @@
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
-/* purgecss end ignore */
 @tailwind utilities;
+@tailwind screens;
+
+
+.ds-title-1 {
+  @apply text-6xl xl:text-7xl font-bold leading-tight
+}
+
+.ds-title-2 {
+  @apply text-5xl font-bold
+}
+
+.ds-title-3 {
+  @apply text-4xl font-semibold
+}
+
+.ds-title-4 {
+  @apply text-xl font-semibold
+}
+
+.ds-subtitle {
+  @apply text-xl font-normal
+}
+/* purgecss end ignore */
+
+
+/* text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600  */
