@@ -24,7 +24,7 @@ export default function Hero({
           {subtitle}
         </p>
         {buttons && (
-          <div className="flex">
+          <div className="flex flex-col gap-3 lg:flex-row">
             {buttons}
           </div>
         )}
