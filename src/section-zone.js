@@ -1,6 +1,8 @@
 import { Fragment } from "react"
 import Button from "./design-system/components/button"
 import Accordion from "./design-system/sections/accordion"
+import Banner from "./design-system/sections/banner"
+import FeaturesList from "./design-system/sections/features-list"
 import Hero from "./design-system/sections/hero"
 import LogosList from "./design-system/sections/logos-list"
 import SectionTitle from "./design-system/sections/section-title"
@@ -35,6 +37,18 @@ export default function SectionZone({
               items={section.items}
             />
           )}
+          {section.__typename === "BannerRecord" && (
+            <Banner
+              title={section.title}
+              buttons={generateButtons(section.buttons)}
+              illustration={section.illustration}
+            />
+          )}
+          {section.__typename === "FeaturesListRecord" && (
+            <FeaturesList
+              items={section.items}
+            />
+          )}
           {section.__typename === "LogosListRecord" && (
             <LogosList
               images={section.images}
@@ -43,6 +57,7 @@ export default function SectionZone({
           {section.__typename === "SectionTitleRecord" && (
             <SectionTitle
               title={section.title}
+              subtitle={section.subtitle}
             />
           )}
           {section.__typename === "SpacerRecord" && (

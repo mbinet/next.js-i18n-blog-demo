@@ -67,6 +67,31 @@ export async function getStaticProps({ params, preview = false, locale }) {
                 }
               }
             }
+            ... on BannerRecord {
+              __typename
+              id
+              title
+              buttons {
+                buttonType
+                externalUrl
+                id
+                text
+              }
+              illustration {
+                responsiveImage(imgixParams: { h: 300 }) {
+                  ...responsiveImageFragment
+                }
+              }
+            }
+            ... on FeaturesListRecord {
+              __typename
+              id
+              items {
+                title
+                description
+                icon
+              }
+            }
             ... on LogosListRecord {
               __typename
               id
