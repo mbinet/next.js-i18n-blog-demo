@@ -33,7 +33,7 @@ export default function Hero({
           />
         )}
         {buttons && (
-          <div className="flex">
+          <div className="flex mt-6">
             {buttons}
           </div>
         )}
