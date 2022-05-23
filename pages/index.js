@@ -19,32 +19,9 @@ export async function getStaticProps({preview, locale}) {
             ...metaTagsFragment
           }
         }
-        blog {
-          seo: _seoMetaTags {
-            ...metaTagsFragment
-          }
-        }
-        allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 20) {
-          title
-          slug
-          excerpt
-          date
-          coverImage {
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-              ...responsiveImageFragment
-            }
-          }
-          author {
-            name
-            picture {
-              url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
-            }
-          }
-        }
       }
 
       ${metaTagsFragment}
-      ${responsiveImageFragment}
     `,
     preview,
   };
@@ -67,33 +44,13 @@ export async function getStaticProps({preview, locale}) {
 }
 
 export default function Index({ subscription }) {
-  const {
-    data: { allPosts, site, blog },
-  } = useQuerySubscription(subscription);
 
   const { locale, locales, asPath } = useRouter().locale;
-
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
-  const metaTags = blog.seo.concat(site.favicon);
 
   return (
     <>
       <Layout preview={subscription.preview}>
-        <Head>{renderMetaTags(metaTags)}</Head>
-        <Container>
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
+        hey
       </Layout>
     </>
   );
