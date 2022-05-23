@@ -11,7 +11,7 @@ import TextImage from "./design-system/sections/text-image"
 
 const generateButtons = (buttons) => {
   return buttons.map((button) => (
-    <Button key={button.id} type={button.buttonType}>
+    <Button key={button.id} type={button.buttonType} externalUrl={button.externalUrl}>
       {button.text}
     </Button>
   ))
