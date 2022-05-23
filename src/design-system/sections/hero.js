@@ -20,7 +20,7 @@ export default function Hero({
             ]}
           />
         </h1>
-        <p className="mb-6 text-gray-700">
+        <p className="mb-6 text-gray-700 ds-subtitle">
           {subtitle}
         </p>
         {buttons && (
