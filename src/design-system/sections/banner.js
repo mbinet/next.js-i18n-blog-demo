@@ -16,7 +16,9 @@ export default function Banner({
       </div>
       <div className="relative flex items-center justify-center md:w-1/2">
         {illustration &&
-          <Image data={illustration?.responsiveImage} className="absolute" style={{position: 'absolute'}}/>
+          <div className="md:absolute">
+            <Image data={illustration?.responsiveImage}/>
+          </div>
         }
       </div>
     </section>
