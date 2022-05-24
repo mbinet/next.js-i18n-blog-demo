@@ -14,7 +14,13 @@ export default async (req, res) => {
   // Enable Preview Mode by setting the cookies
   res.setPreviewData({});
 
-  // Redirect to the homepage
-  res.writeHead(307, { Location: "/" });
+  if (req.query.slug) {
+    // Redirect to the path from the fetched post
+    res.redirect(req.query.slug)
+  } else {
+    // Redirect to the homepage
+    // res.writeHead(307, { Location: "/" });
+  }
+
   res.end();
 };
