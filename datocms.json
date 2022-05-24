@@ -3,7 +3,7 @@
   "description": "Save 2 months of dev time when building your new website",
   "previewImage": "https://www.datocms-assets.com/70392/1653315603-capture-d-ecran-2022-05-23-a-22-19-30.png",
   "livePreviewUrl": "https://next-js-i18n-blog-demo-sable.vercel.app/",
-  "repo": "https://github.com/mbinet/next.js-i18n-blog-demo",
+  "repo": "mbinet/next.js-i18n-blog-demo",
   "datocmsProjectId": "70392",
   "deploymentType": "vercel",
   "datocmsApiTokenEnvName": "NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN",
