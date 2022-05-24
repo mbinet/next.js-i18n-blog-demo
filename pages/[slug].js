@@ -96,7 +96,7 @@ export async function getStaticProps({ params, preview = false, locale }) {
               __typename
               id
               images {
-                responsiveImage(imgixParams: { h: 64 }) {
+                responsiveImage(imgixParams: { h: 48 }) {
                   ...responsiveImageFragment
                 }
               }

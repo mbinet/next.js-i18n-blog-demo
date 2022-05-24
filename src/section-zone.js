@@ -27,7 +27,7 @@ export default function SectionZone({
           title={page.hero[0].title}
           subtitle={page.hero[0].subtitle}
           buttons={generateButtons(page.hero[0].buttons)}
-          illustration={page.hero[0].illustration}
+          illustration={page.hero[0]?.illustration}
         />
       )}
       {page?.sections?.map((section, key) => (
