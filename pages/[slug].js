@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Container from "../components/container";

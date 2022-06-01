@@ -1,13 +1,11 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Container from "../components/container";
-import HeroPost from "../components/hero-post";
+import Header from "../components/header";
 import Layout from "../components/layout";
-import MoreStories from "../components/more-stories";
+import SectionZone from "../src/section-zone";
 import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
-import { useRouter } from "next/router";
-
 
 export async function getStaticProps({preview, locale}) {
   const formattedLocale = locale.split("-")[0];
@@ -19,8 +17,110 @@ export async function getStaticProps({preview, locale}) {
             ...metaTagsFragment
           }
         }
+        home(locale: ${formattedLocale}) {
+          seo: _seoMetaTags {
+            ...metaTagsFragment
+          }
+          hero {
+            title {
+              value
+              blocks
+            }
+            subtitle
+            buttons {
+              buttonType
+              externalUrl
+              id
+              text
+            }
+            illustration {
+              responsiveImage(imgixParams: { w: 644 }) {
+                ...responsiveImageFragment
+              }
+            }
+          }
+          sections {
+            ... on AccordionRecord {
+              __typename
+              id
+              items {
+                title
+                description {
+                  value
+                }
+              }
+            }
+            ... on BannerRecord {
+              __typename
+              id
+              title
+              buttons {
+                buttonType
+                externalUrl
+                id
+                text
+              }
+              illustration {
+                responsiveImage(imgixParams: { h: 300 }) {
+                  ...responsiveImageFragment
+                }
+              }
+            }
+            ... on FeaturesListRecord {
+              __typename
+              id
+              items {
+                title
+                description
+                icon
+              }
+            }
+            ... on LogosListRecord {
+              __typename
+              id
+              images {
+                responsiveImage(imgixParams: { h: 48 }) {
+                  ...responsiveImageFragment
+                }
+              }
+            }
+            ... on SectionTitleRecord {
+              __typename
+              id
+              title
+              subtitle
+            }
+            ... on SpacerRecord {
+              __typename
+              id
+              size
+            }
+            ... on TextImageRecord {
+              __typename
+              id
+              title
+              description {
+                value
+                blocks
+              }
+              buttons {
+                buttonType
+                externalUrl
+                id
+                text
+              }
+              hasImageLeft
+              illustration {
+                responsiveImage(imgixParams: { w: 644 }) {
+                  ...responsiveImageFragment
+                }
+              }
+            }
+          }
+        }
       }
 
+      ${responsiveImageFragment}
       ${metaTagsFragment}
     `,
     preview,
@@ -44,13 +144,20 @@ export async function getStaticProps({preview, locale}) {
 }
 
 export default function Index({ subscription }) {
+  const {
+    data: { site, home },
+  } = useQuerySubscription(subscription);
 
-  const { locale, locales, asPath } = useRouter().locale;
+  const metaTags = home.seo.concat(site.favicon);
 
   return (
     <>
       <Layout preview={subscription.preview}>
-        hey
+        <Head>{renderMetaTags(metaTags)}</Head>
+        <Container>
+          <Header />
+          <SectionZone page={home} />
+        </Container>
       </Layout>
     </>
   );
