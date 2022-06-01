@@ -39,7 +39,9 @@ export default function Hero({
         )}
       </div>
       <div className="flex items-center md:w-1/2">
-        <Image data={illustration.responsiveImage} />
+        {illustration?.responsiveImage &&
+          <Image data={illustration?.responsiveImage} />
+        }
       </div>
     </section>
   )
